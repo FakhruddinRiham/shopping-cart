@@ -65,8 +65,8 @@
 
                      <div class="col-md-4 status">
                         <h5 id="total-price">$1,278</h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5 id="tax-amount">$0</h5>
+                        <h5 id="grand-total">$1,278</h5>
                      </div>
                   </div>
                </div>
@@ -92,6 +92,7 @@
          phoneInput.value = phoneNewCount;
          const phoneTotal = phoneNewCount * 1219;
          document.getElementById("phone-total").innerText = '$' + phoneTotal;
+         calculateTotal();
       }
 
       function handleProductChange(isIncrease) {
@@ -112,32 +113,21 @@
       function calculateTotal(){
          const phoneInput = document.getElementById('phone-count');
          const phoneCount = parseInt(phoneInput.value);
+
          const caseInput = document.getElementById('case-count');
          const caseCount = parseInt(caseInput.value);
+
          const totalPrice = phoneCount * 1219 + caseCount * 59;
          document.getElementById('total-price').innerText= '$' + totalPrice;
+
+         const tax =Math.round(totalPrice * 0.1);
+         document.getElementById('tax-amount').innerText= '$' + tax;
+
+         const grandTotal = totalPrice + tax; 
+         document.getElementById('grand-total').innerText= '$' + grandTotal;
       }
 
- //Iphone
-      // document.getElementById("iphone-add").addEventListener("click", function () {
-      //    const phoneInput = document.getElementById("mobile-count");
-      //    const phoneCount = parseInt(phoneInput.value)
-      //    const phoneNewCount = phoneCount + 1;
-      //    phoneInput.value = phoneNewCount;
-      //    const phoneTotal = phoneNewCount * 1219;
-      //    document.getElementById("phone-total").innerText = '$' + phoneTotal;
-
-      // })
-      // document.getElementById("iphone-minus").addEventListener("click", function () {
-      //    const phoneInput = document.getElementById("mobile-count");
-      //    const phoneCount = parseInt(phoneInput.value)
-      //    const phoneNewCount = phoneCount - 1;
-      //    phoneInput.value = phoneNewCount;
-      //    const phoneTotal = phoneNewCount * 1219;
-      //    document.getElementById("phone-total").innerText = '$' + phoneTotal;
-      // })
-      //Casing
-
+ 
 
    </script>
 </body>
